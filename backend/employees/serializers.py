@@ -51,6 +51,15 @@ class CitySerializer(serializers.ModelSerializer):
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
+    functional_block = FunctionalBlockSerializer()
+    subdivision_1 = Subdivision1Serializer()
+    subdivision_2 = Subdivision2Serializer()
+    subdivision_3 = Subdivision3Serializer()
+    subdivision_4 = Subdivision4Serializer()
+    position = PositionSerializer()
+    role = RoleSerializer()
+    city = CitySerializer()
+
     class Meta:
         model = models.Employee
         fields = '__all__'

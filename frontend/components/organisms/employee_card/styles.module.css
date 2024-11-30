@@ -1,0 +1,91 @@
+.card_wrapper {
+  width: 50%;
+  background-color: #ffffff;
+  padding: 2rem 3rem;
+
+  border-radius: 1.7rem;
+}
+
+.card_main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_main p {
+  margin: 0;
+}
+.card_main .left {
+  width: 80%;
+}
+
+.department {
+  font-family: MTS Wide;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18.25px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+  background-color: #ffeb6d;
+  width: fit-content;
+}
+
+.region {
+  font-family: MTS Wide;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 15.44px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #817e7e;
+}
+
+.profile {
+  display: flex;
+  gap: 2rem;
+}
+
+.profile_img {
+}
+
+.profile_img img {
+}
+
+.profile_content {
+}
+
+.name {
+  font-family: MTS Wide;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.66px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+}
+.role {
+  font-family: MTS Wide;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18.25px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #817e7e;
+}
+
+.right {
+}
+
+.arrow_right {
+  font-size: 2rem;
+  cursor: pointer;
+}

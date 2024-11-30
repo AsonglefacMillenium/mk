@@ -9,6 +9,8 @@ from .serializers import (EmployeeSerializer, FunctionalBlockSerializer, Subdivi
                           Subdivision2Serializer, Subdivision3Serializer, Subdivision4Serializer,
                           PositionSerializer, RoleSerializer, CitySerializer)
 
+from .services import get_employees_by_search_text
+
 
 # -- Отображение справочников и полной таблицы сотрудников -- #
 
@@ -35,19 +37,43 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         /api/employees_search?search=Ищу тестировщика из кредитного отдела
         """
 
-        search_text = request.GET.get("search", None)
+        resp_ems = get_employees_by_search_text(
+            search_text=request.GET.get("search", None),
+            query_set=Employee.objects.all()
+        )
 
-        if search_text is not None:
-            # поиск сотрудников с помощью модели
-            employees_ids = [1, 2, 3]
-            employees = Employee.objects.filter(id__in=employees_ids)
-            return Response(
-                data=EmployeeSerializer(employees, many=True).data,
-                status=200
-            )
+        return Response(
+            data=EmployeeSerializer(resp_ems, many=True).data,
+            status=200
+        )
 
-        else:
-            return super().list(request, *args, **kwargs)
+    @action(detail=False, methods=['get'])
+    def filter(self, request, *args, **kwargs):
+        """
+        Возвращает список сотрудников с их параметрами - список отдается на базе фильтрации из query параметров
+
+        /api/employees_filter?subdivision_1=Центральный офис&functional_block=Корпоративный блок&subdivision_2=онлайн-банкинг для бизнеса&subdivision_3=&Отдел продаж 1&subdivision_4=null?search=Ищу тестировщика из отдела продаж
+        """
+
+        # получаем отфильтрованный список на базе фильтров из query параметров
+
+        ems = Employee.objects.filter(
+            subdivision_1=request.GET.get("subdivision_1", None),
+            functional_block=request.GET.get("functional_block", None),
+            subdivision_2=request.GET.get("subdivision_2", None),
+            subdivision_3=request.GET.get("subdivision_3", None),
+            subdivision_4=request.GET.get("subdivision_4", None)
+        )
+
+        resp_ems = get_employees_by_search_text(
+            search_text=request.GET.get("search", None),
+            query_set=ems
+        )
+
+        return Response(
+            data=EmployeeSerializer(resp_ems, many=True).data,
+            status=200
+        )
 
 
 class FunctionalBlockViewSet(viewsets.ModelViewSet):

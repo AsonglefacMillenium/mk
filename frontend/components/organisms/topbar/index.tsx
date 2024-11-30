@@ -1,33 +1,14 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./styles.module.css";
 
-import AvatarImage from "../../../assets/avatar.jpg";
+
 import { HiOutlineSearch } from "react-icons/hi";
 
-// import { selectAuth, setUser } from "@/redux/slices/auth/signInSlice"
+
 
 const TopBar = () => {
-  //const user = useSelector(selectAuth);
-
-  // console.log("user email is", user?.email);
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     const storedUserData = localStorage.getItem("user");
-  //     if (storedUserData) {
-  //       dispatch(setUser(JSON.parse(storedUserData)));
-  //     } else {
-  //       console.log("User not authenticated and no stored data");
-  //     }
-  //   }
-  // }, [dispatch, user]);
-
-  // useEffect(() => {
-  //   if (user) {
-  //     localStorage.setItem("user", JSON.stringify(user));
-  //   }
-  // }, [user]);
+ 
   return (
     <div className={styles.topbar}>
       <div className={styles.topbar_main}>

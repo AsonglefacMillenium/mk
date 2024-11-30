@@ -1,10 +1,9 @@
 "use client"
-import React, { useEffect } from "react"
+import React from "react"
 import styles from "./styles.module.css"
 
 
 import { ISearchLayout } from "./interface"
-import { useRouter } from "next/navigation"
 import TopBar from "@/components/organisms/topbar"
 import SideBar from "@/components/organisms/sidebar"
 

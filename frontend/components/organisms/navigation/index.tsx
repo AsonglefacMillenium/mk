@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
 
@@ -10,8 +10,7 @@ interface NavProp {
   menuColor?: string
 }
 const NavBar = ({ ...props }: NavProp) => {
-  const [mobile, setMobile] = useState(false);
-  const [langshow, setLangShow] = useState(false);
+ 
 
  
   return (

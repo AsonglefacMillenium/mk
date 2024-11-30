@@ -82,6 +82,11 @@ class Employee(models.Model):
     city = ForeignKey(City, null=True, on_delete=models.SET_NULL)
     address = models.CharField(max_length=100, null=True)
     email = models.EmailField(max_length=100, null=True)
+    # additional
+    senior_employee = models.ForeignKey('self', null=True, on_delete=models.SET_NULL)
+    on_sick = models.BooleanField(default=False)  # на больничном
+    on_leave = models.BooleanField(default=False)  # в отпуске
+    missing_until = models.DateField(null=True)  # отсутствие до
 
     class Meta:
         verbose_name = "Сотрудник"

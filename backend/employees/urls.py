@@ -9,6 +9,10 @@ urlpatterns = [
         # 'post': 'create',
     }), name='employees'),
 
+    path('employees_search/', views.EmployeeViewSet.as_view({
+        'get': 'search',
+    }), name='employees_search'),
+
     # employees params
     # -- functional_blocks
     path('functional_blocks/', views.FunctionalBlockViewSet.as_view({

@@ -8,6 +8,9 @@ urlpatterns = [
         'get': 'list',
         # 'post': 'create',
     }), name='employees'),
+    path('employees/<int:pk>/', views.EmployeeViewSet.as_view({
+        'get': 'retrieve',
+    }), name='employee'),
 
     path('employees_search/', views.EmployeeViewSet.as_view({
         'get': 'search',

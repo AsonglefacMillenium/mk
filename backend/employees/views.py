@@ -28,6 +28,12 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         """
         return super().list(request, *args, **kwargs)
 
+    def retrieve(self, request, *args, **kwargs):
+        """
+        Возвращает детальные данные по сотруднику
+        """
+        return super().retrieve(request, *args, **kwargs)
+
     @action(detail=False, methods=['get'])
     def search(self, request, *args, **kwargs):
         """

@@ -1,0 +1,45 @@
+
+
+networks:
+  mk_project:
+
+services:
+# ----------------------- BACKEND -----------------------
+
+  django:
+    container_name: django
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    restart: unless-stopped
+    volumes:
+      - ./backend:/usr/src/app
+      - static_volume:/app/static  # Для использования в nginx
+    ports:
+      - "8000:8000" # Порт для Django в порты ОС
+    networks:
+      - mk_project
+
+
+# ---------------------------- NGINX --------------------------------
+  nginx:
+    container_name: nginx
+    volumes:
+      - static_volume:/app/static
+      - ./backend:/usr/src/app
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    restart: unless-stopped
+    depends_on:
+       - django
+
+    networks:
+      - mk_project
+
+
+volumes:
+  static_volume:

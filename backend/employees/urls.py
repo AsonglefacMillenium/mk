@@ -13,6 +13,10 @@ urlpatterns = [
         'get': 'search',
     }), name='employees_search'),
 
+    path('employees_filter/', views.EmployeeViewSet.as_view({
+        'get': 'filter',
+    }), name='employees_filter'),
+
     # employees params
     # -- functional_blocks
     path('functional_blocks/', views.FunctionalBlockViewSet.as_view({

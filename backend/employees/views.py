@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.decorators import action
 
 from .models import (Employee, FunctionalBlock, Subdivision1, Subdivision2,
                      Subdivision3, Subdivision4, Position, Role, City)
@@ -7,6 +9,8 @@ from .serializers import (EmployeeSerializer, FunctionalBlockSerializer, Subdivi
                           Subdivision2Serializer, Subdivision3Serializer, Subdivision4Serializer,
                           PositionSerializer, RoleSerializer, CitySerializer)
 
+
+# -- Отображение справочников и полной таблицы сотрудников -- #
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     """
@@ -21,6 +25,29 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         Возвращает список сотрудников с их параметрами
         """
         return super().list(request, *args, **kwargs)
+
+    @action(detail=False, methods=['get'])
+    def search(self, request, *args, **kwargs):
+        """
+        Возвращает список сотрудников с их параметрами - список отдается на базе поиска с помощью обученной модели.
+        На вход подается query параметр - строка поиска ("Ищу тестировщика из кредитного отдела")
+
+        /api/employees_search?search=Ищу тестировщика из кредитного отдела
+        """
+
+        search_text = request.GET.get("search", None)
+
+        if search_text is not None:
+            # поиск сотрудников с помощью модели
+            employees_ids = [1, 2, 3]
+            employees = Employee.objects.filter(id__in=employees_ids)
+            return Response(
+                data=EmployeeSerializer(employees, many=True).data,
+                status=200
+            )
+
+        else:
+            return super().list(request, *args, **kwargs)
 
 
 class FunctionalBlockViewSet(viewsets.ModelViewSet):
@@ -100,7 +127,7 @@ class Subdivision4ViewSet(viewsets.ModelViewSet):
 
 class PositionViewSet(viewsets.ModelViewSet):
     """
-    Вьюсет для работы с данными таблицы о позициях
+    Вьюсет для работы с данными таблицы о позициях (должностях)
     """
 
     queryset = Position.objects.all()

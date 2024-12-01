@@ -93,6 +93,7 @@ const SearchPage = () => {
                   on_leave={employee.on_leave}
                   on_sick={employee.on_sick}
                   missing_until={employee?.missing_until}
+                  id={employee.id}
                 />
               ))
             ) : (

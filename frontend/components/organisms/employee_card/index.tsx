@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { FaChevronRight } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 interface EmployeeCardProps {
   name: string;
@@ -10,8 +11,11 @@ interface EmployeeCardProps {
   on_sick: boolean;
   on_leave: boolean;
   missing_until: string | null;
+  id: string | number
 }
 const EmployeeCard = ({ ...props }: EmployeeCardProps) => {
+  const router = useRouter()
+
   return (
     <div className={styles.card_wrapper}>
       <div className={styles.card_main}>
@@ -50,7 +54,7 @@ const EmployeeCard = ({ ...props }: EmployeeCardProps) => {
           </div>
         </div>
 
-        <div className={styles.right}>
+        <div className={styles.right} onClick={() => router.push(`/search/${props.id}`)}>
           <FaChevronRight className={styles.arrow_right} />
         </div>
       </div>

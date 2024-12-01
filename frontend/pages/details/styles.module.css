@@ -1,0 +1,187 @@
+.details_wrapper {
+  width: 100%;
+  padding-left: 4rem;
+  padding-top: 3rem;
+  background-color: #ffff;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.bottom_section {
+  display: flex;
+
+  gap: 3rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 60%;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  position: absolute;
+  right: 0;
+  width: 30%;
+}
+
+.right_top {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating h3 {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 3rem;
+  color: #ffeb6d;
+}
+.img_wrapper {
+  width: 100%;
+  background-color: #d9d9d9;
+
+  gap: 0px;
+  border-top-left-radius: 118.5px;
+  border-bottom-left-radius: 118.5px;
+  opacity: 0px;
+  display: flex;
+  padding: 2rem;
+}
+
+.img_wrapper img {
+  width: 175px;
+  height: 175px;
+  top: 1719px;
+  left: -142px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.age h3 {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+}
+
+.age p {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #817e7e;
+}
+
+.education h3 {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+}
+
+.education p {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #817e7e;
+}
+
+.projects h4 {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #817e7e;
+}
+
+.projects p {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #817e7e;
+  width: 20%;
+}
+
+.user_name .name {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+  width: 50%;
+}
+
+.user_name .date {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+}
+
+.user_name .position {
+  font-family: 'MTS Wide', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #1e1e1e;
+  margin-top: 2rem;
+  width: 60%;
+}

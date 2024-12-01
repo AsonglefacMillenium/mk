@@ -32,7 +32,7 @@ const EmployeeCard = ({ ...props }: EmployeeCardProps) => {
                   className={styles.status_circle}
                   title={
                     props.on_leave
-                      ? "Пляж с морем и пальма"
+                      ? `Пляж с морем и пальма До ${props.missing_until}`
                       : props.on_sick
                       ? "Человек в кровати"
                       : "Человечек за компам"

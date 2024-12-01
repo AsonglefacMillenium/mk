@@ -23,21 +23,21 @@ services:
 
 
 # ----------------------- FRONTEND -----------------------
-#  nextjs:
-#    container_name: nextjs
-#    build:
-#      context: ./frontend
-#      dockerfile: Dockerfile
-#    command: npm run build && npm run start
-#    volumes:
-#      - ./frontend:/app
-#    ports:
-#      - "3000:3000"
-#    restart: unless-stopped
-#    depends_on:
-#      - django
-#    networks:
-#      - mk_project
+  nextjs:
+    container_name: nextjs
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm run dev # npm run build && npm run start
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    depends_on:
+      - django
+    networks:
+      - mk_project
 
 
 # ---------------------------- NGINX --------------------------------
@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
     depends_on:
        - django
-#       - nextjs
+       - nextjs
 
     networks:
       - mk_project

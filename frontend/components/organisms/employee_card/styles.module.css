@@ -4,6 +4,7 @@
   padding: 2rem 3rem;
 
   border-radius: 1.7rem;
+  
 }
 
 .card_main {
@@ -81,8 +82,7 @@
   color: #817e7e;
 }
 
-.right {
-}
+
 
 .arrow_right {
   font-size: 2rem;
@@ -93,5 +93,9 @@
 .name_status{
   display: flex;
   gap: 2rem;
+  
+}
+
+.status_circle{
   cursor: pointer;
 }

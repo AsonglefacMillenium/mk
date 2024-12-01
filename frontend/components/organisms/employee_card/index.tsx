@@ -32,10 +32,10 @@ const EmployeeCard = ({ ...props }: EmployeeCardProps) => {
                   className={styles.status_circle}
                   title={
                     props.on_leave
-                      ? `Пляж с морем и пальма До ${props.missing_until}`
+                      ? `В отпуске до ${props.missing_until}`
                       : props.on_sick
-                      ? "Человек в кровати"
-                      : "Человечек за компам"
+                      ? `В На больничном до ${props.missing_until}`
+                      : "В работе"
                   }
                   // style={{
                   //   backgroundColor: props.on_leave? "" : props.on_sick? "" : ""

@@ -1,6 +1,6 @@
 export interface ISearchLayout {
     children: JSX.Element;
-    searchparam: any;
+    searchparam: string;
     setSearchQuery: (query: string) => void;
   }
   

@@ -9,9 +9,9 @@ import SideBar from "@/components/organisms/sidebar"
 
 
 
-interface LayoutProps{
-  searchparam: any
-}
+// interface LayoutProps{
+//   searchparam: any
+// }
 const SearchLayout = ({ children, searchparam, setSearchQuery }: ISearchLayout) => {
 
 

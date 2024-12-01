@@ -7,7 +7,13 @@ import { ISearchLayout } from "./interface"
 import TopBar from "@/components/organisms/topbar"
 import SideBar from "@/components/organisms/sidebar"
 
-const SearchLayout = ({ children }: ISearchLayout) => {
+
+
+interface LayoutProps{
+  searchparam: any
+}
+const SearchLayout = ({ children, searchparam, setSearchQuery }: ISearchLayout) => {
+
 
  
   return (
@@ -19,7 +25,7 @@ const SearchLayout = ({ children }: ISearchLayout) => {
 
       <div className={styles.main_wrapper}>
         <div className={styles.topBar}>
-          <TopBar />
+          <TopBar searchparam={searchparam} setSearchQuery={setSearchQuery}/>
         </div>
 
         <div className={styles.dashboard_wrapper}>{children}</div>

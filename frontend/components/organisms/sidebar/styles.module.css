@@ -11,6 +11,9 @@
     overflow-y: auto;
     scrollbar-color: #c4c2c2 #AAB4C3;
     scrollbar-width: thin;
+    border-right: 4px solid #D9D9D9;
+    z-index: 20;
+    
 }
 
 .title{

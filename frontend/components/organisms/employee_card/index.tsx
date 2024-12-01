@@ -2,15 +2,22 @@ import React from "react";
 import styles from "./styles.module.css";
 import { FaChevronRight } from "react-icons/fa";
 
-const EmployeeCard = () => {
+
+interface EmployeeCardProps{
+  name: string
+  position: string
+  subdivisions2: string
+  subdivisions1: string
+}
+const EmployeeCard = ({...props}: EmployeeCardProps) => {
   return (
     <div className={styles.card_wrapper}>
       <div className={styles.card_main}>
         <div className={styles.left}>
           <p className={styles.department}>
-            Управление ипотечного кредитования
+            {props.subdivisions2}
           </p>
-          <p className={styles.region}>Филиал в Волгоградской области</p>
+          <p className={styles.region}>{props.subdivisions1}</p>
 
           <div className={styles.profile}>
             <div className={styles.profile_img}>
@@ -18,8 +25,8 @@ const EmployeeCard = () => {
             </div>
 
             <div className={styles.profile_content}>
-              <p className={styles.name}>Зинаида Пахомова</p>
-              <p className={styles.role}>начальник управления</p>
+              <p className={styles.name}>{props.name}</p>
+              <p className={styles.role}>{props.position}</p>
             </div>
           </div>
         </div>

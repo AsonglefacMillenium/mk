@@ -1,14 +1,22 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 
 
 import { HiOutlineSearch } from "react-icons/hi";
 
 
-
-const TopBar = () => {
+interface TopBarProps{
+  searchparam: any;
+  setSearchQuery: (query: string) => void;
+}
+const TopBar = ({...props}: TopBarProps) => {
+ // const [searchQuery, setSearchQuery] = useState(props.searchparam);
  
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.setSearchQuery(e.target.value);
+  };
   return (
     <div className={styles.topbar}>
       <div className={styles.topbar_main}>
@@ -17,6 +25,8 @@ const TopBar = () => {
           <input
             type="text"
             placeholder="ФИО, роль, проект, должность, отдел, город работы"
+            value={props.searchparam}
+            onChange={handleSearchChange}
           />
         </div>
 

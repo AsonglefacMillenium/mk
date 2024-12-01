@@ -81,7 +81,7 @@ def get_employees_by_search_text(search_text: str | None, query_set: QuerySet | 
 
         print(result_ids)
 
-        # dev
+        # dev - так как модель училась по БД с другими ID
         result_ids = list(map(lambda x: x - 214, result_ids))
 
         employees = query_set.filter(id__in=result_ids)

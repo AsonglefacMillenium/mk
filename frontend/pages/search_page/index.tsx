@@ -90,6 +90,9 @@ const SearchPage = () => {
                   subdivisions1={employee.subdivision_1?.name}
                   subdivisions2={employee.subdivision_2?.name}
                   position={employee.position.name}
+                  on_leave={employee.on_leave}
+                  on_sick={employee.on_sick}
+                  missing_until={employee?.missing_until}
                 />
               ))
             ) : (

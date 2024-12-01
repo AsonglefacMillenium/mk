@@ -89,3 +89,10 @@
   font-size: 2rem;
   cursor: pointer;
 }
+
+
+.name_status{
+  display: flex;
+  gap: 2rem;
+  cursor: pointer;
+}

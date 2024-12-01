@@ -61,7 +61,7 @@
 }
 
 .radio_container label {
-  font-family: MTS Wide;
+  font-family: 'MTS Wide', sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 22.46px;

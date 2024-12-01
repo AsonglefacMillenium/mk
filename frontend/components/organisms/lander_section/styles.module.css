@@ -1,83 +1,72 @@
-.lander_wrapper{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding:8rem 0 ;
-
+.lander_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 0;
 }
 
-.lander_main{
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8rem;
-   
-    
+.lander_main {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8rem;
 }
 
-.lander_img{
-    width: 45%;
-    display: flex;
-    justify-content: center;
+.lander_img {
+  width: 45%;
+  display: flex;
+  justify-content: center;
 }
 
-
-
-.lander_img img{
-   
+.lander_img img {
 }
 
-.lander_content{
-    width: 40%;
+.lander_content {
+  width: 40%;
 }
 
-.lander_content h1{
-    font-family: MTS Wide;
-font-size: 4.4rem;
-font-weight: 500;
-line-height: 61.78px;
-letter-spacing: 0.01em;
-text-align: left;
-color: #ffffff;
-width: 70%;
-
-
-
+.lander_content h1 {
+  font-family: "MTS Wide", sans-serif;
+  font-size: 4.4rem;
+  font-weight: 500;
+  line-height: 61.78px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #ffffff;
+  width: 80%;
 }
 
-.lander_content p{
-    font-family: MTS Wide;
-font-size: 20px;
-font-weight: 500;
-line-height: 28.08px;
-letter-spacing: 0.01em;
-text-align: left;
-text-underline-position: from-font;
-text-decoration-skip-ink: none;
-color: #ffffff;
-
+.lander_content p {
+  font-family: "MTS Wide", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28.08px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ffffff;
 }
 
-.lander_content a{
-    display: block;
-    width: fit-content;
-height: fit-content;
-padding: 1rem 4rem;
-gap: 0px;
-border-radius: 2.5rem;
-opacity: 0px;
-background-color: #FF0032;
-font-family: MTS Wide;
-font-size: 2rem;
-font-weight: 500;
-line-height: 28.08px;
-text-align: center;
+.lander_content a {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem 4rem;
+  gap: 0px;
+  border-radius: 2.5rem;
+  opacity: 0px;
+  background-color: #ff0032;
+  font-family: "MTS Wide", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 28.08px;
+  text-align: center;
 
-color: #ffffff;
-text-decoration: none;
-cursor: pointer;
-border: none;
-
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
 }

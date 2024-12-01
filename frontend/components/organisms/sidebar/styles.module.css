@@ -43,7 +43,7 @@
 .back_nav a {
   text-decoration: none;
   color: #ff0032;
-  font-family: MTS Wide;
+  font-family: 'MTS Wide', sans-serif;
   font-size: 4rem;
   font-weight: 500;
   line-height: 28.08px;
@@ -111,6 +111,7 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  font-family: 'MTS Wide', sans-serif;
 }
 
 .filter_items {

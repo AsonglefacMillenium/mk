@@ -20,7 +20,7 @@
 }
 
 .department {
-  font-family: MTS Wide;
+  font-family: 'MTS Wide', sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 18.25px;
@@ -34,7 +34,7 @@
 }
 
 .region {
-  font-family: MTS Wide;
+  font-family: 'MTS Wide', sans-serif;
   font-size: 1.6rempx;
   font-weight: 500;
   line-height: 15.44px;
@@ -60,7 +60,7 @@
 }
 
 .name {
-  font-family: MTS Wide;
+  font-family: 'MTS Wide', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 19.66px;
@@ -71,7 +71,7 @@
   color: #1e1e1e;
 }
 .role {
-  font-family: MTS Wide;
+  font-family: 'MTS Wide', sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: 18.25px;

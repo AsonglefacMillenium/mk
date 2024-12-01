@@ -216,76 +216,130 @@ import { Employee } from "@/types/types";
 import axios from "axios";
 
 const ITEMS_PER_PAGE = 10; // Number of items per page
+const DEBOUNCE_DELAY = 2000;
 
 const SearchPage = () => {
-  const [employees, setEmployees] = useState<Employee[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]); // Sidebar filters
+  // const [employees, setEmployees] = useState<Employee[]>([]);
+  // const [searchQuery, setSearchQuery] = useState<string>("");
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  // const [selectedFilters, setSelectedFilters] = useState<string[]>([]); // Sidebar filters
 
+  // useEffect(() => {
+  //   const fetchEmployees = async () => {
+  //     try {
+  //       const res = await axios.get("http://localhost/api/employees_search/");
+  //       setEmployees(res.data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch employees:", error);
+  //     }
+  //   };
+
+  //   fetchEmployees();
+  // }, []);
+
+  // // Filter employees based on search query and sidebar filters
+  // const filteredEmployees = employees.filter((employee) => {
+  //   const normalizedQuery = searchQuery.replace(/,/g, " ");
+  //   const searchTerms = normalizedQuery
+  //     .toLowerCase()
+  //     .split(/\s+/)
+  //     .filter(Boolean);
+
+  //   const matchesSearchQuery = searchTerms.every((term) => {
+  //     return (
+  //       employee.name?.toLowerCase().includes(term) ||
+  //       employee.surname?.toLowerCase().includes(term) ||
+  //       employee.role?.name?.toLowerCase().includes(term) ||
+  //       employee.city?.name?.toLowerCase().includes(term) ||
+  //       employee.position?.name?.toLowerCase().includes(term) ||
+  //       employee.subdivision_1?.name?.toLowerCase().includes(term) ||
+  //       employee.subdivision_2?.name?.toLowerCase().includes(term) ||
+  //       employee.functional_block?.name?.toLowerCase().includes(term)
+  //     );
+  //   });
+
+  //   const matchesFilters =
+  //     selectedFilters.length === 0 || // No filters selected
+  //     selectedFilters.some((filter) =>
+  //       [
+  //         employee.subdivision_1?.id.toString(),
+  //         employee.subdivision_2?.id.toString(),
+  //         employee.role?.id.toString(),
+  //         employee.city?.id.toString(),
+  //         employee.position?.id.toString(),
+  //       ].includes(filter)
+  //     );
+
+  //   return matchesSearchQuery && matchesFilters;
+  // });
+
+  // // Calculate total pages
+  // const totalPages = Math.ceil(filteredEmployees.length / ITEMS_PER_PAGE);
+
+  // // Get employees for the current page
+  // const paginatedEmployees = filteredEmployees.slice(
+  //   (currentPage - 1) * ITEMS_PER_PAGE,
+  //   currentPage * ITEMS_PER_PAGE
+  // );
+
+  // // Handle page navigation
+  // const handlePageChange = (page: number) => {
+  //   setCurrentPage(page);
+  // };
+
+  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>(""); // For user input
+  const [debouncedQuery, setDebouncedQuery] = useState<string>(""); // For delayed API call
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]); // For sidebar filters
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false); // For loading state
+  const [error, setError] = useState<string | null>(null); // For error handling
+
+  // Debounce Effect: Delay API query until user stops typing
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+    }, DEBOUNCE_DELAY);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
+  // Fetch employees based on search query and filters
   useEffect(() => {
     const fetchEmployees = async () => {
+      setLoading(true);
+      setError(null);
+
       try {
-        const res = await axios.get("http://localhost/api/employees/");
+        const searchParams = new URLSearchParams();
+        if (debouncedQuery) searchParams.append("search", debouncedQuery);
+        if (selectedFilters.length > 0) {
+          searchParams.append("search", selectedFilters.join(","));
+        }
+
+        const res = await axios.get(
+          `http://localhost:8000/api/employees_search/?${searchParams.toString()}`
+        );
         setEmployees(res.data);
-      } catch (error) {
-        console.error("Failed to fetch employees:", error);
+      } catch (err) {
+        setError("Failed to fetch employees. Please try again.");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchEmployees();
-  }, []);
+  }, [debouncedQuery, selectedFilters]);
 
-  // Filter employees based on search query and sidebar filters
-  const filteredEmployees = employees.filter((employee) => {
-    const normalizedQuery = searchQuery.replace(/,/g, " ");
-    const searchTerms = normalizedQuery
-      .toLowerCase()
-      .split(/\s+/)
-      .filter(Boolean);
-
-    const matchesSearchQuery = searchTerms.every((term) => {
-      return (
-        employee.name?.toLowerCase().includes(term) ||
-        employee.surname?.toLowerCase().includes(term) ||
-        employee.role?.name?.toLowerCase().includes(term) ||
-        employee.city?.name?.toLowerCase().includes(term) ||
-        employee.position?.name?.toLowerCase().includes(term) ||
-        employee.subdivision_1?.name?.toLowerCase().includes(term) ||
-        employee.subdivision_2?.name?.toLowerCase().includes(term) ||
-        employee.functional_block?.name?.toLowerCase().includes(term)
-      );
-    });
-
-    const matchesFilters =
-      selectedFilters.length === 0 || // No filters selected
-      selectedFilters.some((filter) =>
-        [
-          employee.subdivision_1?.id.toString(),
-          employee.subdivision_2?.id.toString(),
-          employee.role?.id.toString(),
-          employee.city?.id.toString(),
-          employee.position?.id.toString(),
-        ].includes(filter)
-      );
-
-    return matchesSearchQuery && matchesFilters;
-  });
-
-  // Calculate total pages
-  const totalPages = Math.ceil(filteredEmployees.length / ITEMS_PER_PAGE);
-
-  // Get employees for the current page
-  const paginatedEmployees = filteredEmployees.slice(
+  // Pagination logic
+  const totalPages = Math.ceil(employees.length / ITEMS_PER_PAGE);
+  const paginatedEmployees = employees.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
 
-  // Handle page navigation
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
-
   return (
     <SearchLayout
       searchparam={searchQuery}
@@ -294,19 +348,21 @@ const SearchPage = () => {
       setSelectedFilters={setSelectedFilters}
     >
       <div className={styles.layout_wrapper}>
-       
-
         {/* Main Content */}
         <div className={styles.main_wrapper}>
           <div className={styles.cards_wrapper}>
-            {paginatedEmployees.length > 0 ? (
+            {loading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>{error}</p>
+            ) : paginatedEmployees.length > 0 ? (
               paginatedEmployees.map((employee) => (
                 <EmployeeCard
                   key={employee.id}
                   name={`${employee.name} ${employee.surname}`}
                   subdivisions1={employee.subdivision_1?.name}
                   subdivisions2={employee.subdivision_2?.name}
-                  position={employee.position?.name}
+                  position={employee.position.name}
                 />
               ))
             ) : (

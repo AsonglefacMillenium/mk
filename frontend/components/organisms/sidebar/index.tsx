@@ -30,21 +30,21 @@ const SideBar = ({ ...props }: SidebarProps) => {
           {node.children && (
             <button
               className={styles.toggleButton}
-              onClick={() => toggleNode(node.id)}
+              onClick={() => toggleNode(node.name)}
             >
-              {expandedNodes.includes(node.id) ? "-" : "+"}
+              {expandedNodes.includes(node.name) ? "-" : "+"}
             </button>
           )}
           <label>
             <input
               type="checkbox"
-              checked={props.selectedFilters.includes(node.id)}
-              onChange={() => handleCheckboxChange(node.id)}
+              checked={props.selectedFilters.includes(node.name)}
+              onChange={() => handleCheckboxChange(node.name)}
             />
             {node.name}
           </label>
         </div>
-        {node.children && expandedNodes.includes(node.id) && (
+        {node.children && expandedNodes.includes(node.name) && (
           <div className={styles.children}>
             {renderHierarchy(node.children)}
           </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles.module.css";
 
 
@@ -7,7 +7,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 
 
 interface TopBarProps{
-  searchparam: any;
+  searchparam: string;
   setSearchQuery: (query: string) => void;
 }
 const TopBar = ({...props}: TopBarProps) => {

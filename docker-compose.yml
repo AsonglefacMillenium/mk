@@ -28,11 +28,11 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    command: npm run build && npm run start
+    command: npm run build && npm run dev
     volumes:
       - ./frontend:/app
     ports:
-      - "3000:3000"
+      - "3002:3002"
     restart: unless-stopped
     depends_on:
       - django

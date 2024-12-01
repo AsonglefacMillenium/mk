@@ -1,5 +1,5 @@
 .card_wrapper {
-  width: 50%;
+  width: 70%;
   background-color: #ffffff;
   padding: 2rem 3rem;
 
@@ -21,7 +21,7 @@
 
 .department {
   font-family: MTS Wide;
-  font-size: 13px;
+  font-size: 1.6rem;
   font-weight: 500;
   line-height: 18.25px;
   letter-spacing: 0.04em;
@@ -35,7 +35,7 @@
 
 .region {
   font-family: MTS Wide;
-  font-size: 11px;
+  font-size: 1.6rempx;
   font-weight: 500;
   line-height: 15.44px;
   letter-spacing: 0.04em;

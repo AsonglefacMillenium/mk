@@ -9,10 +9,7 @@ import SideBar from "@/components/organisms/sidebar"
 
 
 
-interface LayoutProps{
-  searchparam: any
-}
-const SearchLayout = ({ children, searchparam, setSearchQuery }: ISearchLayout) => {
+const SearchLayout = ({ children, searchparam, setSearchQuery, selectedFilters, setSelectedFilters }: ISearchLayout) => {
 
 
  
@@ -20,7 +17,7 @@ const SearchLayout = ({ children, searchparam, setSearchQuery }: ISearchLayout) 
 
     <div className={styles.layout_wrapper}>
       <div className={styles.sidebar_wrapper}>
-        <SideBar />
+        <SideBar selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} />
       </div>
 
       <div className={styles.main_wrapper}>
